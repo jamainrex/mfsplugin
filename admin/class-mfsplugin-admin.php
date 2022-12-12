@@ -115,13 +115,12 @@ class Mfsplugin_Admin {
 			echo wp_send_json($response);
 			wp_die();
 		}
-		
-		
+
+		$message = '{ "message" : "'.$_REQUEST['message'].'" }';
 		$curl = curl_init();
-		$device_id = '943CC645E3A8';
-		$url = 'http://143.110.214.199:8080/v1/devices/'. $device_id .'/commands';
+
 		curl_setopt_array($curl, array(
-		CURLOPT_URL => $url,
+		CURLOPT_URL => 'http://143.110.214.199:8080/v1/devices/'. $device_id .'/commands',
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING => '',
 		CURLOPT_MAXREDIRS => 10,
@@ -129,10 +128,7 @@ class Mfsplugin_Admin {
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => 'POST',
-		CURLOPT_POSTFIELDS =>'Law See Fear
-		{
-		"message" : "{\\r\\n  \\"limits\\" : \\"1\\"\\r\\n}"
-		}',
+		CURLOPT_POSTFIELDS => $message,
 		CURLOPT_HTTPHEADER => array(
 			'Content-Type: application/json'
 		),
@@ -141,6 +137,19 @@ class Mfsplugin_Admin {
 		$response = curl_exec($curl);
 
 		curl_close($curl);
+
+		if( is_null( $response ) || !$response ) {
+			$resp = array(
+				'status' => 'success',
+				'success' => true,
+				'data' => $response,
+				'message' => "Device has been activated!"
+			);
+			echo wp_send_json($resp);
+			wp_die();
+		}
+
+
 		$respJson = json_decode( $response );
 		if( $respJson->status != 200 ) {
 			$resp = array(

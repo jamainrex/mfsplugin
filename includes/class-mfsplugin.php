@@ -72,7 +72,7 @@ class Mfsplugin {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'mfsplugin';
+		$this->plugin_name = MFSPLUGIN_PLUGIN_NAME;
 
 		$this->load_dependencies();
 		$this->set_locale();

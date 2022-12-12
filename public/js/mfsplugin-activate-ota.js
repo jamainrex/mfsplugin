@@ -28,13 +28,16 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
+    //console.log(mfsplugin_params);
 
     $(function() {
         $('a#activate-ota-btn').on('click', function() {
             var el = $(this);
 
+            console.log(mfsplugin_params);
             var data = new FormData();
             data.append('action', 'activate_ota');
+            data.append('message', mfsplugin_params.message);
 
             $.ajax({
                 type: 'post',
@@ -53,10 +56,10 @@
                     console.log("Msg: ", data.message);
 
                     if( data.error ) {
-                        alert(data.message);
+                        alert(mfsplugin_params.error_msg);
                     } 
                     else {
-                        alert(data.message);
+                        alert(mfsplugin_params.success_msg);
                         el.attr('disabled','disabled');
                     }
                 },
