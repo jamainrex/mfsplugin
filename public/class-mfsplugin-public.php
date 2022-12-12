@@ -54,6 +54,11 @@ class Mfsplugin_Public {
 
 	}
 
+	public function init()
+    {
+        Mfsplugin_Shortcodes::register_shortcodes();
+    }
+
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
@@ -97,6 +102,9 @@ class Mfsplugin_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mfsplugin-public.js', array( 'jquery' ), $this->version, false );
+		wp_localize_script( $this->plugin_name, 'mfsplugin_ajax', array(
+			'url' => admin_url( 'admin-ajax.php' )
+		) );
 
 	}
 

@@ -36,6 +36,9 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'MFSPLUGIN_VERSION', '1.0.0' );
+define( 'MFSPLUGIN_SLUG', 'mfsplugin' );
+define( 'MFSPLUGIN_PLUGIN_NAME', 'mfsplugin' );
+define( 'MFSPLUGIN_NAME', 'Mind Full Solutions Plugin' );
 
 /**
  * The code that runs during plugin activation.
