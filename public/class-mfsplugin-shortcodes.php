@@ -18,8 +18,10 @@ class Mfsplugin_Shortcodes
             'error_msg' => 'Error Message'
         ), $atts));
 
+        $fid = wp_unique_id('ota');
+
         wp_enqueue_script( MFSPLUGIN_PLUGIN_NAME . '-activate-ota-js', plugin_dir_url( __FILE__ ) . 'js/mfsplugin-activate-ota.js', array( 'jquery' ), MFSPLUGIN_VERSION, false );
-        wp_localize_script( MFSPLUGIN_PLUGIN_NAME . '-activate-ota-js', 'mfsplugin_params', array(
+        wp_localize_script( MFSPLUGIN_PLUGIN_NAME . '-activate-ota-js', 'mfsplugin_params' , array(
 			'message' => $message,
             'success_msg' => $success_msg,
             'error_msg' => $error_msg

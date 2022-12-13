@@ -31,13 +31,18 @@
     //console.log(mfsplugin_params);
 
     $(function() {
-        $('a#activate-ota-btn').on('click', function() {
+        $('a.activate-ota-btn').on('click', function(e) {
+            e.preventDefault();
             var el = $(this);
-
-            console.log(mfsplugin_params);
+            var fid = el.data('fid');
+            //console.log(el);
+            //console.log(fid);
+            var message = $("#"+fid+'_message').val();
+            var success_msg = $("#"+fid+'_success').val();
+            var error_msg = $("#"+fid+'_error').val();
             var data = new FormData();
             data.append('action', 'activate_ota');
-            data.append('message', mfsplugin_params.message);
+            data.append('message', message);
 
             $.ajax({
                 type: 'post',
@@ -56,11 +61,21 @@
                     console.log("Msg: ", data.message);
 
                     if( data.error ) {
-                        alert(mfsplugin_params.error_msg);
+                        //alert(error_msg);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            html: error_msg
+                          });
                     } 
                     else {
-                        alert(mfsplugin_params.success_msg);
+                        //alert(success_msg);
                         el.attr('disabled','disabled');
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            html: success_msg
+                          })
                     }
                 },
                 success: function (response) {

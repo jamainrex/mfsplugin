@@ -101,6 +101,7 @@ class Mfsplugin_Public {
 		 * class.
 		 */
 
+		wp_enqueue_script( 'sweetalert2', '//cdn.jsdelivr.net/npm/sweetalert2@11', array('jquery'), '3.3.5', true );
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mfsplugin-public.js', array( 'jquery' ), $this->version, false );
 		wp_localize_script( $this->plugin_name, 'mfsplugin_ajax', array(
 			'url' => admin_url( 'admin-ajax.php' )
