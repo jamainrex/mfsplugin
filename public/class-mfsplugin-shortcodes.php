@@ -103,6 +103,8 @@ class Mfsplugin_Shortcodes
 
         $fid = wp_unique_id('ota');
 
+        $fid = wp_unique_id('ota');
+
         wp_enqueue_script( MFSPLUGIN_PLUGIN_NAME . '-activate-ota-js', plugin_dir_url( __FILE__ ) . 'js/mfsplugin-activate-ota.js', array( 'jquery' ), MFSPLUGIN_VERSION, false );
         wp_localize_script( MFSPLUGIN_PLUGIN_NAME . '-activate-ota-js', 'mfsplugin_params' , array(
 			'message' => $message,

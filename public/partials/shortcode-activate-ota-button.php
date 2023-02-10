@@ -6,6 +6,7 @@
 			<a href="#" data-fid="<?php echo $fid; ?>" class="elementor-button-link elementor-button elementor-size-sm activate-ota-btn<?php echo $btn; ?>" role="button">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-text"><?php echo $btn_text; ?></span>
+						<span class="elementor-button-text"><?php echo $btn_text; ?></span>
 		</span>
 					</a>
 		</div>

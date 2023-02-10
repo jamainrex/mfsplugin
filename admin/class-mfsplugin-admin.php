@@ -223,6 +223,7 @@ class Mfsplugin_Admin {
 		$message = '{ "message" : '. stripslashes( $_REQUEST['message'] ) .' }';
 		$curl = curl_init();
 
+
 		curl_setopt_array($curl, array(
 		CURLOPT_URL => 'http://staging.mindfullsolutions.site:8080/v1/devices/'. $device_id .'/commands',
 		CURLOPT_RETURNTRANSFER => true,
@@ -232,6 +233,7 @@ class Mfsplugin_Admin {
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		CURLOPT_CUSTOMREQUEST => 'POST',
+		CURLOPT_POSTFIELDS => $message,
 		CURLOPT_POSTFIELDS => $message,
 		CURLOPT_HTTPHEADER => array(
 			'Content-Type: application/json'
