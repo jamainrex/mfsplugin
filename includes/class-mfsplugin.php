@@ -72,7 +72,7 @@ class Mfsplugin {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'mfsplugin';
+		$this->plugin_name = MFSPLUGIN_PLUGIN_NAME;
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -160,7 +160,10 @@ class Mfsplugin {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'wp_ajax_activate_ota', $plugin_admin, 'activate_ota' );
 		$this->loader->add_action( 'wp_ajax_nopriv_activate_ota', $plugin_admin, 'activate_ota' );
-
+		$this->loader->add_action( 'wp_ajax_activate_ota_bydevid', $plugin_admin, 'activate_ota_bydevid' );
+		$this->loader->add_action( 'wp_ajax_nopriv_activate_ota_bydevid', $plugin_admin, 'activate_ota_bydevid' );
+		$this->loader->add_action( 'wp_ajax_update_user_device', $plugin_admin, 'update_user_device' );
+		$this->loader->add_action( 'wp_ajax_nopriv_update_user_device', $plugin_admin, 'update_user_device' );
 	}
 
 	/**
